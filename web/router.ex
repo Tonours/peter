@@ -38,6 +38,14 @@ defmodule Peter.Router do
     get "/", PageController, :index
   end
 
+  scope "/api", Peter do
+    pipe_through :api
+
+    scope "v1" do
+      resources "/repliques", RepliqueController, only: [:index, :show]
+    end
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Peter do
   #   pipe_through :api
