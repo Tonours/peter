@@ -1,0 +1,6 @@
+<h2>New replique</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: admin_replique_path(@conn, :create) %>
+
+<%= link "Back", to: admin_replique_path(@conn, :index) %>

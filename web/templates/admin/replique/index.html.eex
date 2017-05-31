@@ -24,13 +24,13 @@
       <td><%= replique.published %></td>
 
       <td class="text-right">
-        <%= link "Show", to: replique_path(@conn, :show, replique), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: replique_path(@conn, :edit, replique), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: replique_path(@conn, :delete, replique), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link "Show", to: admin_replique_path(@conn, :show, replique), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: admin_replique_path(@conn, :edit, replique), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: admin_replique_path(@conn, :delete, replique), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New replique", to: replique_path(@conn, :new) %>
+<%= link "New replique", to: admin_replique_path(@conn, :new) %>

@@ -13,12 +13,29 @@ defmodule Peter.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
+  pipeline :auth do
+    plug Guardian.Plug.EnsureAuthenticated, handler: Peter.AuthHandler
+  end
+
+  scope "/admin", Peter.Admin, as: :admin do
+    pipe_through [:browser, :browser_session, :auth]
+
+    get "/pages", PageController, :index
+    resources "/repliques", RepliqueController
+  end
+
   scope "/", Peter do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
+
+    resources "/users", UserController, only: [:new, :create]
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     get "/", PageController, :index
-
-    resources "/repliques", RepliqueController
   end
 
   # Other scopes may use custom stacks.

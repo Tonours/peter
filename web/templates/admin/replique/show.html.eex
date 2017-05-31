@@ -34,5 +34,5 @@
 
 </ul>
 
-<%= link "Edit", to: replique_path(@conn, :edit, @replique) %>
-<%= link "Back", to: replique_path(@conn, :index) %>
+<%= link "Edit", to: admin_replique_path(@conn, :edit, @replique) %>
+<%= link "Back", to: admin_replique_path(@conn, :index) %>
