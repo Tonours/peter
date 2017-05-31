@@ -1,0 +1,36 @@
+<h2>Listing repliques</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Song</th>
+      <th>Video</th>
+      <th>Published</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for replique <- @repliques do %>
+    <tr>
+      <td><%= replique.title %></td>
+      <td><%= replique.description %></td>
+      <td><%= replique.image %></td>
+      <td><%= replique.song %></td>
+      <td><%= replique.video %></td>
+      <td><%= replique.published %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: replique_path(@conn, :show, replique), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: replique_path(@conn, :edit, replique), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: replique_path(@conn, :delete, replique), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New replique", to: replique_path(@conn, :new) %>

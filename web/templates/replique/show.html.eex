@@ -1,0 +1,38 @@
+<h2>Show replique</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @replique.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @replique.description %>
+  </li>
+
+  <li>
+    <strong>Image:</strong>
+    <%= @replique.image %>
+  </li>
+
+  <li>
+    <strong>Song:</strong>
+    <%= @replique.song %>
+  </li>
+
+  <li>
+    <strong>Video:</strong>
+    <%= @replique.video %>
+  </li>
+
+  <li>
+    <strong>Published:</strong>
+    <%= @replique.published %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: replique_path(@conn, :edit, @replique) %>
+<%= link "Back", to: replique_path(@conn, :index) %>
