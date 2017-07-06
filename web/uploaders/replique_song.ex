@@ -31,7 +31,7 @@ defmodule Peter.RepliqueSong do
   end
 
   # Override the storage directory:
-  def storage_dir() do
+  def storage_dir(version, {file, scope}) do
     "uploads/repliques/songs"
   end
 
