@@ -19,7 +19,7 @@ defmodule Peter.Mixfile do
   def application do
     [mod: {Peter, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :comeonin]]
+                    :phoenix_ecto, :postgrex, :comeonin, :arc_ecto]]
   end
 
   # Specifies which paths to compile per environment.
@@ -39,6 +39,10 @@ defmodule Peter.Mixfile do
      {:gettext, "~> 0.11"},
      {:guardian, "~> 0.13.0"},
      {:comeonin, "~> 2.6"},
+     {:arc_ecto, "~> 0.7.0"},
+     {:arc, "~> 0.8.0"},
+     {:zarex, "~> 0.2"},
+     {:slugger, "~> 0.2"},
      {:cowboy, "~> 1.0"}]
   end
 

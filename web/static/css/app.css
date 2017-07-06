@@ -1,1 +1,19 @@
 /* This file is for your main application css. */
+
+html,
+body {
+  height: 100%;
+}
+
+.layout {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.layout--peter {
+  background-image: url('/images/peter-and-steven.gif');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

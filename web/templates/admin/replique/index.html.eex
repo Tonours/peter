@@ -18,9 +18,9 @@
     <tr>
       <td><%= replique.title %></td>
       <td><%= replique.description %></td>
-      <td><%= replique.image %></td>
-      <td><%= replique.song %></td>
-      <td><%= replique.video %></td>
+      <td><img src="<%= Peter.RepliqueImage.url({replique.image, replique}) %>"/></td>
+      <td><a href="<%= Peter.RepliqueSong.url({replique.song, replique}) %>" title="Écouter le son" target="_blank">Écouter le son</a></td>
+      <td><a href="<%= Peter.RepliqueVideo.url({replique.video, replique}) %>" title="Voir la vidéo" target="_blank">Voir la vidéo</a></td>
       <td><%= replique.published %></td>
 
       <td class="text-right">

@@ -14,17 +14,17 @@
 
   <li>
     <strong>Image:</strong>
-    <%= @replique.image %>
+    <img src="<%= Peter.RepliqueImage.url({@replique.image, @replique}) %>"/>
   </li>
 
   <li>
     <strong>Song:</strong>
-    <%= @replique.song %>
+    <a href="<%= Peter.RepliqueSong.url({@replique.song, @replique}) %>" title="Écouter le son" target="_blank">Écouter le son</a>
   </li>
 
   <li>
     <strong>Video:</strong>
-    <%= @replique.video %>
+    <a href="<%= Peter.RepliqueVideo.url({@replique.video, @replique}) %>" title="Voir la vidéo" target="_blank">Voir la vidéo</a>
   </li>
 
   <li>

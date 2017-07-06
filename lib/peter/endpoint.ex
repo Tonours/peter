@@ -11,6 +11,9 @@ defmodule Peter.Endpoint do
     at: "/", from: :peter, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
+  plug Plug.Static,
+    at: "/medias", from: Path.expand('./medias'), gzip: false
+
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do

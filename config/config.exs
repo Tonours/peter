@@ -32,6 +32,10 @@ config :guardian, Guardian,
   secret_key: "f/VxYgdq2sHJmZyufte4/QS2IkJHF5oclVmoCvdfGBozBTk/a4Z6TXyCyL2XtSyt",
   serializer: Peter.GuardianSerializer
 
+# Arc configuration
+config :arc,
+  storage: Arc.Storage.Local
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

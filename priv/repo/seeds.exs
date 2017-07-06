@@ -9,3 +9,7 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+# Seed user
+
+Peter.Repo.insert!(%Peter.User{email: "bonjour@anthonyguimard.fr", password_hash: Comeonin.Bcrypt.hashpwsalt(System.get_env("PETER_USER_PASSWORD"))})

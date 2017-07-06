@@ -13,6 +13,10 @@ defmodule Peter.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :admin_layout do
+    plug :put_layout, {Peter.LayoutView, :admin}
+  end
+
   pipeline :browser_session do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource
@@ -22,26 +26,31 @@ defmodule Peter.Router do
     plug Guardian.Plug.EnsureAuthenticated, handler: Peter.AuthHandler
   end
 
-  scope "/admin", Peter.Admin, as: :admin do
-    pipe_through [:browser, :browser_session, :auth]
-
-    get "/pages", PageController, :index
-    resources "/repliques", RepliqueController
-  end
 
   scope "/", Peter do
     pipe_through :browser
 
-    resources "/users", UserController, only: [:new, :create]
-    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    get "/", PageController, :index
+
+  end
+
+  scope "/sessions", Peter do
+    pipe_through [:browser, :admin_layout]
+
+    resources "/", SessionController, only: [:new, :create, :delete]
+  end
+
+  scope "/admin", Peter.Admin, as: :admin do
+    pipe_through [:browser, :browser_session, :auth, :admin_layout]
 
     get "/", PageController, :index
+    resources "/repliques", RepliqueController
   end
 
   scope "/api", Peter do
     pipe_through :api
 
-    scope "v1" do
+    scope "/v1" do
       resources "/repliques", RepliqueController, only: [:index, :show]
     end
   end

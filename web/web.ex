@@ -52,6 +52,7 @@ defmodule Peter.Web do
       import Peter.Router.Helpers
       import Peter.ErrorHelpers
       import Peter.Gettext
+      import Peter.ViewHelper
     end
   end
 

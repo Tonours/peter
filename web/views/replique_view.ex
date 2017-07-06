@@ -11,15 +11,23 @@ defmodule Peter.RepliqueView do
       %{ replique: replique_json(replique) }
   end
 
-
   def replique_json(replique) do
     %{
       id: replique.id,
       title: replique.title,
       description: replique.description,
-      image: replique.image,
-      song: replique.song,
-      video: replique.video,
+      image:  Map.merge(
+        Peter.RepliqueImage.urls({replique.image, replique}),
+        replique.image
+      ),
+      song: Map.merge(
+        Peter.RepliqueSong.urls({replique.song, replique}),
+        replique.song
+      ),
+      video: Map.merge(
+        Peter.RepliqueVideo.urls({replique.video, replique}),
+        replique.video
+      ),
       inserted_at: replique.inserted_at,
       updated_at: replique.updated_at
     }
