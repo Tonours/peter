@@ -18,7 +18,7 @@ defmodule Peter.RepliqueSong do
   # end
 
   # Override the persisted filenames:
-  def filename(version, {file}) do
+  def filename(version, {file, scope}) do
     file_name =
       Path.basename(file.file_name, Path.extname(file.file_name))
       |> String.normalize(:nfd)
