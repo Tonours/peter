@@ -35,7 +35,7 @@ defmodule Peter.RepliqueImage do
 
   # Override the storage directory:
   def storage_dir() do
-    "medias/repliques/images"
+    "uploads/repliques/images"
   end
 
 end

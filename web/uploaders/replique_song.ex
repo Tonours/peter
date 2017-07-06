@@ -32,7 +32,7 @@ defmodule Peter.RepliqueSong do
 
   # Override the storage directory:
   def storage_dir() do
-    "medias/repliques/songs"
+    "uploads/repliques/songs"
   end
 
 end

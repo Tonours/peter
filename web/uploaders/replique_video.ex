@@ -36,7 +36,7 @@ defmodule Peter.RepliqueVideo do
 
   # Override the storage directory:
   def storage_dir() do
-    "medias/repliques/videos"
+    "uploads/repliques/videos"
   end
 
 end
