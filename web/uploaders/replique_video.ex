@@ -5,7 +5,7 @@ defmodule Peter.RepliqueVideo do
   def __storage, do: Arc.Storage.Local
   # Include ecto support (requires package arc_ecto installed):
   # use Arc.Ecto.Definition
-
+  @acl :public_read
   @versions [:original]
 
   # To add a thumbnail version:
@@ -37,6 +37,10 @@ defmodule Peter.RepliqueVideo do
   # Override the storage directory:
   def storage_dir(version, {file, scope}) do
     "uploads/repliques/videos"
+  end
+
+  def s3_object_headers(version, {file, scope}) do
+    [content_type: Plug.MIME.path(file.file_name)]
   end
 
 end

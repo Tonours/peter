@@ -4,7 +4,7 @@ defmodule Peter.RepliqueSong do
 
   # Include ecto support (requires package arc_ecto installed):
   # use Arc.Ecto.Definition
-
+  @acl :public_read
   @versions [:original]
 
   # Whitelist file extensions:
@@ -33,6 +33,10 @@ defmodule Peter.RepliqueSong do
   # Override the storage directory:
   def storage_dir(version, {file, scope}) do
     "uploads/repliques/songs"
+  end
+
+  def s3_object_headers(version, {file, scope}) do
+    [content_type: Plug.MIME.path(file.file_name)]
   end
 
 end
