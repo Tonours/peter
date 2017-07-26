@@ -18,19 +18,35 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :image, class: "control-label" %>
+    <div class="label__wrap">
+      <%= label f, :image, class: "control-label" %>
+      <%= if f.data.image.file_name do %>
+        <a href="<%= Peter.RepliqueImage.url({f.data.image, f.data}) %>" title="voir l'image" class="btn btn-primary btn-xs" target="_blank">Voir l'image actuel</a>
+      <%= end %>
+    </div>
     <%= file_input f, :image, class: "form-control" %>
     <%= error_tag f, :image %>
   </div>
 
   <div class="form-group">
-    <%= label f, :song, class: "control-label" %>
+    <div class="label__wrap">
+      <%= label f, :song, class: "control-label" %>
+      <%= if f.data.song.file_name do %>
+        <a href="<%= Peter.RepliqueSong.url({f.data.song, f.data}) %>" title="Écouter le son" class="btn btn-primary btn-xs" target="_blank">Écouter le son actuel</a>
+      <%= end %>
+    </div>
     <%= file_input f, :song, class: "form-control" %>
     <%= error_tag f, :song %>
   </div>
 
+
   <div class="form-group">
-    <%= label f, :video, class: "control-label" %>
+    <div class="label__wrap">
+      <%= label f, :video, class: "control-label" %>
+      <%= if f.data.video.file_name do %>
+        <a href="<%= Peter.RepliqueVideo.url({f.data.video, f.data}) %>" title="voir la vidéo" class="btn btn-primary btn-xs" target="_blank">Voir la vidéo actuelle</a>
+      <%= end %>
+    </div>
     <%= file_input f, :video, class: "form-control" %>
     <%= error_tag f, :video %>
   </div>

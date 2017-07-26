@@ -1,38 +1,31 @@
-<h2>Show replique</h2>
-
-<ul>
-
-  <li>
-    <strong>Title:</strong>
-    <%= @replique.title %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @replique.description %>
-  </li>
-
-  <li>
-    <strong>Image:</strong>
-    <img src="<%= Peter.RepliqueImage.url({@replique.image, @replique}) %>"/>
-  </li>
-
-  <li>
-    <strong>Song:</strong>
-    <a href="<%= Peter.RepliqueSong.url({@replique.song, @replique}) %>" title="Écouter le son" target="_blank">Écouter le son</a>
-  </li>
-
-  <li>
-    <strong>Video:</strong>
-    <a href="<%= Peter.RepliqueVideo.url({@replique.video, @replique}) %>" title="Voir la vidéo" target="_blank">Voir la vidéo</a>
-  </li>
-
-  <li>
-    <strong>Published:</strong>
-    <%= @replique.published %>
-  </li>
-
-</ul>
-
-<%= link "Edit", to: admin_replique_path(@conn, :edit, @replique) %>
-<%= link "Back", to: admin_replique_path(@conn, :index) %>
+<div class="page-header">
+  <h2>
+    Détail de la réplique
+    <span class="pull-right">
+      <%= link "Voir les répliques", to: admin_replique_path(@conn, :index), class: "btn btn-primary btn-md" %>
+    </span>
+  </h2>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-11">
+      <div class="thumbnail">
+        <%= link to: admin_replique_path(@conn, :edit, @replique) do %>
+          <img src="<%= Peter.RepliqueImage.url({@replique.image, @replique}) %>" alt="Image de la réplique <%= @replique.title %>">
+        <%= end %>
+        <div class="caption">
+          <h5><%= @replique.title %></h5>
+          <p><%= @replique.description %></p>
+          <p>
+            <a href="<%= Peter.RepliqueSong.url({@replique.song, @replique}) %>" title="Écouter le son" target="_blank">Écouter le son</a> <br>
+            <a href="<%= Peter.RepliqueVideo.url({@replique.video, @replique}) %>" title="Voir la vidéo" target="_blank">Voir la vidéo</a>
+          </p>
+          <p>
+            <%= link "Éditer", to: admin_replique_path(@conn, :edit, @replique), class: "btn btn-primary btn-xs" %>
+            <%= link "Supprimer", to: admin_replique_path(@conn, :delete, @replique), method: :delete, data: [confirm: "Pour de vrai ?"], class: "btn btn-danger btn-xs" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

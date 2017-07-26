@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,26 +12,40 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-            <li>
-              <%= if logged_in?(@conn) do %>
-                <%= link "Sign out", to: session_path(@conn, :delete, :access),
-                    method: :delete, class: "btn btn-danger" %><br>
-                <%= current_user(@conn).email %>
-              <% else %>
-                <%= link "Sign in", to: session_path(@conn, :new),
-                    class: "btn btn-danger" %>
-              <% end %>
-            </li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Afficher le menu</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <a class="navbar-brand" href="/admin">
+            Sheraf
+          </a>
 
+          <p class="navbar-text">
+            <%= if logged_in?(@conn) do %>
+              Connecté en tant que <%= current_user(@conn).name %>
+            <% end %>
+          </p>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <%= if logged_in?(@conn) do %>
+              <li><a href="/admin">Administration</a></li>
+              <li><%= link "Répliques", to: admin_replique_path(@conn, :index) %><li>
+                <%= link "Sign out", to: session_path(@conn, :delete, :access),
+                  method: :delete, class: "btn navbar-btn btn-danger" %><br>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
@@ -40,6 +54,8 @@
       </main>
 
     </div> <!-- /container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>

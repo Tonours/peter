@@ -1,3 +1,14 @@
-<p>
-  Hello
-</p>
+<div class="jumbotron">
+  <h2>Salut, Hugues ! Hugues, salut !</h2>
+  <p>
+    Selon Georges, tu as <strong><%= @repliques_info.total %></strong> <%= @repliques_info.label %> dont <strong><%= @repliques_info.published %></strong> en ligne et <strong><%= @repliques_info.unpublished %></strong> hors-ligne.
+  </p>
+  <p><small>"C'est ça, la puissance intellectuelle. Bac + 2, les enfants."</small></p>
+  <p>
+    <%= if @repliques_info.total > 0 do %>
+      <%= link "Voir les répliques", to: admin_replique_path(@conn, :index), class: "btn btn-primary btn-lg" %>
+    <%= else %>
+      <%= link "Ajouter une replique", to: admin_replique_path(@conn, :new), class: "btn btn-primary btn-lg" %>
+    <%= end %>
+  </p>
+</div>

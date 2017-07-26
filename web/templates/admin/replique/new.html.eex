@@ -1,5 +1,11 @@
-<h2>New replique</h2>
-
+<div class="page-header">
+  <h2>
+    Nouvelle réplique
+    <span class="pull-right">
+      <%= link "Voir les répliques", to: admin_replique_path(@conn, :index), class: "btn btn-primary btn-md" %>
+    </span>
+  </h2>
+</div>
 <%= render "form.html", changeset: @changeset,
                         action: admin_replique_path(@conn, :create) %>
 

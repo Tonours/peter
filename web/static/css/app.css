@@ -17,3 +17,25 @@ body {
   background-position: center center;
   background-size: cover;
 }
+
+/* Admin tweak */
+
+.navbar + .container {
+  padding-top: 50px;
+}
+
+.label__wrap .btn {
+  float: right;
+}
+
+@media (max-width: 768px) {
+  .navbar-fixed-top .navbar-right .navbar-btn {
+    margin-left: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-fixed-top .navbar-right .navbar-btn {
+    margin-right: 15px;
+  }
+}

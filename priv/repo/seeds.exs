@@ -12,4 +12,4 @@
 
 # Seed user
 
-Peter.Repo.insert!(%Peter.User{email: "bonjour@anthonyguimard.fr", password_hash: Comeonin.Bcrypt.hashpwsalt(System.get_env("PETER_USER_PASSWORD"))})
+Peter.Repo.insert!(%Peter.User{email: "bonjour@anthonyguimard.fr", name: "Anthony", password_hash: Comeonin.Bcrypt.hashpwsalt(System.get_env("PETER_USER_PASSWORD"))})

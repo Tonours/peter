@@ -7,6 +7,7 @@ defmodule Peter.User do
 
   schema "users" do
     field :email, :string
+    field :name, :string
     field :password_hash, :string
 
     field :password, :string, virtual: true
@@ -18,8 +19,9 @@ defmodule Peter.User do
   @doc "Builds a changeset based on the `struct` and `params`."
   def register_changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :password, :password_confirmation])
-    |> validate_required([:email, :password, :password_confirmation])
+    |> cast(params, [:email, :name, :password, :password_confirmation])
+    |> validate_required([:email, :name, :password, :password_confirmation])
+    |> validate_length(:name, min: 3)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:password, min: 8)
     |> validate_confirmation(:password)

@@ -1,36 +1,41 @@
-<h2>Listing repliques</h2>
+<div class="page-header">
+  <h2>
+    Les répliques
+    <span class="pull-right">
+      <%= link "Ajouter une réplique", to: admin_replique_path(@conn, :new), class: "btn btn-primary btn-md" %>
+    </span>
+  </h2>
+</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>Song</th>
-      <th>Video</th>
-      <th>Published</th>
+<div class="container">
+  <div class="row">
+    <%= for replique <- @repliques do %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= link to: admin_replique_path(@conn, :edit, replique) do %>
+            <img src="<%= Peter.RepliqueImage.url({replique.image, replique}) %>" alt="Image de la réplique <%= replique.title %>">
+          <%= end %>
+          <div class="caption">
+            <h5><%= replique.title %></h5>
+            <p><%= replique.description %></p>
+            <p>
+              <%= link "Éditer", to: admin_replique_path(@conn, :edit, replique), class: "btn btn-primary btn-xs" %>
+              <%= link "Supprimer", to: admin_replique_path(@conn, :delete, replique), method: :delete, data: [confirm: "Pour de vrai ?"], class: "btn btn-danger btn-xs" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for replique <- @repliques do %>
-    <tr>
-      <td><%= replique.title %></td>
-      <td><%= replique.description %></td>
-      <td><img src="<%= Peter.RepliqueImage.url({replique.image, replique}) %>"/></td>
-      <td><a href="<%= Peter.RepliqueSong.url({replique.song, replique}) %>" title="Écouter le son" target="_blank">Écouter le son</a></td>
-      <td><a href="<%= Peter.RepliqueVideo.url({replique.video, replique}) %>" title="Voir la vidéo" target="_blank">Voir la vidéo</a></td>
-      <td><%= replique.published %></td>
-
-      <td class="text-right">
-        <%= link "Show", to: admin_replique_path(@conn, :show, replique), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: admin_replique_path(@conn, :edit, replique), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: admin_replique_path(@conn, :delete, replique), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<%= link "New replique", to: admin_replique_path(@conn, :new) %>
+  <div class="row">
+    <%= if Enum.empty?(@repliques) do %>
+        <p class="alert alert-info">
+          Comme on dit, pas de repliques... bah pas de repliques.
+        </p>
+        <p class="text-center">
+          <%= link "Ajouter une replique", to: admin_replique_path(@conn, :new), class: "btn btn-primary" %>
+        </p>
+      <% end %>
+  </div>
+</div>
