@@ -20,7 +20,7 @@
   <div class="form-group">
     <div class="label__wrap">
       <%= label f, :image, class: "control-label" %>
-      <%= if f.data.image.file_name do %>
+      <%= if f.data.image do %>
         <a href="<%= Peter.RepliqueImage.url({f.data.image, f.data}) %>" title="voir l'image" class="btn btn-primary btn-xs" target="_blank">Voir l'image actuel</a>
       <%= end %>
     </div>
@@ -31,7 +31,7 @@
   <div class="form-group">
     <div class="label__wrap">
       <%= label f, :song, class: "control-label" %>
-      <%= if f.data.song.file_name do %>
+      <%= if f.data.song do %>
         <a href="<%= Peter.RepliqueSong.url({f.data.song, f.data}) %>" title="Écouter le son" class="btn btn-primary btn-xs" target="_blank">Écouter le son actuel</a>
       <%= end %>
     </div>
@@ -43,7 +43,7 @@
   <div class="form-group">
     <div class="label__wrap">
       <%= label f, :video, class: "control-label" %>
-      <%= if f.data.video.file_name do %>
+      <%= if f.data.video do %>
         <a href="<%= Peter.RepliqueVideo.url({f.data.video, f.data}) %>" title="voir la vidéo" class="btn btn-primary btn-xs" target="_blank">Voir la vidéo actuelle</a>
       <%= end %>
     </div>
