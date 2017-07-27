@@ -17,7 +17,6 @@
           <%= end %>
           <div class="caption">
             <h5><%= replique.title %></h5>
-            <p><%= replique.description %></p>
             <p>
               <%= link "Éditer", to: admin_replique_path(@conn, :edit, replique), class: "btn btn-primary btn-xs" %>
               <%= link "Supprimer", to: admin_replique_path(@conn, :delete, replique), method: :delete, data: [confirm: "Pour de vrai ?"], class: "btn btn-danger btn-xs" %>
